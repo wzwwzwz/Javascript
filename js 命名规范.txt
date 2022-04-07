@@ -1,0 +1,36 @@
+风格:
+1. 大驼峰 -> 首字母大写 eg: PascalCase (每一个单词首字母大写)
+2. 小驼峰 -> 首字母小写 eg: camelCase (只有单词的首字母是小写)
+
+一 项目命名
+全部采用小写，以下划线符号“_”分割。 
+eg: my_first_project
+
+二 目录命名
+参照项目命名，有复数结构时，采用复数。 
+eg: scripts || styles || images
+
+三 常量
+全大写; 用下划线 “_” 分割。 
+eg: MAX_COUNT
+
+四 变量
+小驼峰格式；前缀为名字;
+eg: tableTitle
+
+五 函数
+小驼峰格式；前缀为动词(set || can || has || is || get);
+eg: setName
+
+六 注释
+1. 打印的数据  
+eg: "//>"
+2. 返回的结果(表达式);
+eg: "//->"
+3. 函数的注释
+eg:
+/**
+* 函数说明
+* @params { String } 参数
+* @return { String } 返回结果
+*/
