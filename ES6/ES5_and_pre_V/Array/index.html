@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+
+<body>
+    <script>
+        /**************************************************************************************************************************
+         * 一.创建数组
+         *   1.字面量定义
+         *   2.new 关键词
+         **************************************************************************************************************************/
+        //2. 用new 关键词创建 --->  new Array()
+        // @returns 返回创建的数组
+        // @params 可选
+        new Array() // 返回空数组
+        new Array(5) // 返回长度为5的空数组
+        new Array(5, 4, 32); // [5, 4, 32]
+
+
+        /**************************************************************************************************************************
+         * 二.方法
+         * 1. concat() --- 连接两个或更多的数组，并返回结果。
+         * 2. join() --- 把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。
+         * 3. pop() --- 删除并返回数组的最后一个元素
+         * 4. push() --- 	向数组的末尾添加一个或更多元素，并返回新的长度。
+         * 5. reverse() --- 颠倒数组中元素的顺序。
+         * 6. shift() --- 删除并返回数组的第一个元素
+         * 7. slice() --- 从某个已有的数组返回选定的元素
+         * 8. sort() --- 
+         * 9. splice() --- 
+         * 10.toSource() --- 
+         * 11.toString() --- 
+         * 12.unshift() --- 
+         * 13.valueOf() --- 
+         **************************************************************************************************************************/
+
+        (function () {
+            var arr = [1, 2, 3]
+            var arr2 = [7, 8, 9]
+
+            /** 1
+             * @method concat
+             * @description 连接两个或更多的数组
+             * @grammar arrayObject.concat(a1,a2,a3)
+             * @param  必须。一个|| 多个。 任意格式
+             * @return 新的数组
+             **/
+            var c1 = arr.concat(arr2, 10, "dddadwe", {}) // [1, 2, 3, 7, 8, 9,10,"dddadwe", {}]
+
+
+            /** 2
+             * @method join
+             * @description 用于把数组中的所有元素放入一个字符串。且元素是通过指定的分隔符进行分隔的。
+             * @grammar arrayObject.join(separator)
+             * @param  separator 可选。指定分隔符，默认逗号
+             * @return 返回一个字符串。arrayObject 的每个元素转换为字符串.然后把这些字符串用连接符连接起来
+             **/
+            var j1 = arr.join() // "1,2,3"
+            var j2 = arr.join("</br>") // "1</br>2</br>3"
+            var j3 = [{
+                name: "v"
+            }, {
+                name: "zico"
+            }].join() // "[object Object],[object Object]"
+
+
+            /** 3.
+             * @method pop
+             * @description 方法用于删除并返回数组的最后一个元素。
+             * @grammar arrayObject.pop()
+             * @param  无
+             * @return arrayObject 的最后一个元素。
+             **/
+            var a_p = [1, 2, 3]
+            var p1 = a_p.pop() // 3 并且  a_p = [1,2]
+            var p2 = [].pop() // undefined
+
+            /** 4.
+             * @method push
+             * @description 方法可向数组的末尾添加一个或多个元素，并返回新的长度。
+             * @grammar arrayObject.push(newelement1,newelement2,....,newelementX)
+             * @param newelement1 必需。要添加到数组的第一个元素。
+             * @param newelement2 可选。添加的第二个元素
+             * @return 把指定值添加到数组后的长度
+             **/
+            var a_pu = [10, 20, 30]
+            var pu1 = a_pu.push(25) // 4
+
+
+            /** 5.
+             * @method shift
+             * @description 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值
+             * @grammar arrayObject.shift()
+             * @param 无
+             * @return 返回删除的值
+             **/
+            var a_shift = [10, 20, 30]
+            var sh1 = a_shift.shift() //10
+            var sh2 = [].shift() // undefiend
+
+            /**
+             * @method unshift
+             * @description 方法可向数组的开头添加一个或更多元素，并返回新的长度。
+             * @grammar arrayObject.unshift(newelement1,newelement2,....,newelementX)
+             * @param newelement1 必需。向数组添加的第一个元素。
+             * @param newelement2 可选。向数组添加的第二个元素。
+             * @return arrayObject 的新长度。
+             **/
+            var a_us = [1, 3, 5]
+            var us1 = a_us.unshift(12) // 4  并且 a_us = [12, 1, 3, 5]
+
+            /**
+             * @method reverse
+             * @description 方法用于颠倒数组中元素的顺序。该方法会改变原来的数组，而不会创建新的数组。
+             * @grammar arrayObject.reverse()
+             * @param  无
+             * @return 因为原数据也会颠倒 --> 返回颠倒后的数据 
+             **/
+            var a_r = [1, 3, 5, 7, 9]
+            var r1 = a_r.reverse() // [9,7,5,3,1]
+
+
+            /**
+             * @method slice
+             * @description 方法可从已有的数组中返回选定的元素(包头不包尾)
+             * @grammar arrayObject.slice(start,end) 
+             * @param  start 参数说明 必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。
+             * @param  end 可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。
+             * @return 返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。
+             **/
+            var a_slice = [2, 4, 6, 8]
+            var sli1 = a_slice.slice(0) // [2, 4, 6, 8]
+            var sli2 = a_slice.slice(1, 3) // [4,6]
+            var sli3 = a_slice.slice(4, 20) // []
+            var sli4 = a_slice.slice(-1) // [8]
+            var sli5 = a_slice.slice(-8) // [2, 4, 6, 8]
+
+            /**
+             * @method sort
+             * @description 方法用于对数组的元素进行排序。
+             * @grammar arrayObject.sort(sortby)
+             * @param  { Function } sortby 可选。规定排序顺序。必须是函数。
+             * @return 对数组的引用。请注意，数组在原数组上进行排序，不生成副本。
+             **/
+            var sort1 = [, 5, 1, 39, 4, 6, 2, 7, 65, 2, 20].sort() // [1, 2, 2, 20, 39, 4, 5, 6, 65, 7, empty]
+            var sort2 = [, 5, 1, 39, 4, 6, 2, 7, 65, 2, 20].sort(function (a, b) {
+                return a - b
+            }) // [1, 2, 2, 4, 5, 6, 7, 20, 39, 65, empty]
+
+            var sort3 = [, 5, 1, 39, 4, 6, 2, 7, 65, 2, 20].sort(function (a, b) {
+                return b - a
+            }) //[65, 39, 20, 7, 6, 5, 4, 2, 2, 1, empty]
+
+
+
+            /**
+             * @method splice
+             * @description 方法向/从数组中添加/删除项目，然后返回被删除的项目。
+             * @grammar arrayObject.splice(index,howmany,item1,.....,itemX)
+             * @param  index 必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置。
+             * @param  howmany 必需。要删除的项目数量。如果设置为 0，则不会删除项目。
+             * @param  item1, ..., 可选。向数组添加的新项目。
+             * @return {Array} 包含被删除项目的新数组，如果有的话。
+             **/
+            // 建议理解: 从第一个参数开始，删除第二个参数个数，添加第三个参数
+            var a_splice = ["zico", "V", "DH"]
+            var sp1 = a_splice.splice(0, 0) //  []
+
+            var a_splice2 = ["zico", "V", "DH"]
+            var sp2 = a_splice2.splice(1, 1) //  ["V"] && a_splice2 = ["V", "DH"]
+
+            var a_splice3 = ["zico", "V", "DH"]
+            var sp3 = a_splice3.splice(0, 0, "jg") //  []  && a_splice3 = ["jg","zico", "V", "DH"]
+
+            var a_splice4 = ["zico", "V", "DH"]
+            var sp4 = a_splice4.splice(2, 1, "jg") //  ["DH"]  && a_splice4 = ["zico", "V", "jg"]
+
+            var a_splice5 = ["zico", "V", "DH"]
+            var sp5 = a_splice5.splice(2, 1) //  ["DH"]  && a_splice5 = ["zico", "V"]
+
+        })();
+    </script>
+</body>
+
+</html>
